@@ -1,0 +1,34 @@
+{
+  "name": "nes-web",
+  "version": "0.1.0",
+  "description": "NES web application",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "deploy": "./deploy.js",
+    "start": "webpack-dev-server"
+  },
+  "repository": "https://gitlab.com/jeffrey-xiao/nes-web",
+  "keywords": [
+    "webassembly",
+    "wasm",
+    "rust",
+    "webpack"
+  ],
+  "author": "Jeffrey Xiao <jeffrey.xiao1998@gmail.com>",
+  "license": "(MIT OR Apache-2.0)",
+  "devDependencies": {
+    "copy-webpack-plugin": "^4.5.2",
+    "css-loader": "^1.0.0",
+    "gh-pages": "^1.2.0",
+    "node-sass": "^4.9.3",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.0",
+    "webpack": "^4.16.3",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
+  },
+  "dependencies": {
+    "nes-wasm": "file:../nes-rs/pkg"
+  }
+}

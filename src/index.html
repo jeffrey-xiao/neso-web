@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>nes-web - Jeffrey Xiao</title>
+  </head>
+  <body>
+    <div id="header">nes-web</div>
+
+    <div id="description">
+      An NES emulator written in Rust that compiles to WebAssembly. For more information, check
+      out <a class="styled-link" href="https://gitlab.com/jeffrey-xiao/nes-web">nes-web</a>
+      and <a class="styled-link" href="https://gitlab.com/jeffrey-xiao/nes-rs">nes-rs</a>.
+    </div>
+
+    <div id="menu-buttons">
+      <button id="start-button">Start</button>
+      <button id="stop-button">Stop</button>
+      <input type="file" id="rom-input">
+      <button id="load-button">Load</button>
+    </div>
+    <canvas id="nes-canvas"></canvas>
+    <script src="./bootstrap.js"></script>
+  </body>
+</html>

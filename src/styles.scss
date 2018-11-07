@@ -1,0 +1,149 @@
+@import url(https://fonts.googleapis.com/css?family=Inconsolata);
+@import url('https://fonts.googleapis.com/css?family=Josefin+Slab');
+
+$header-font: 'Josefin Slab', serif;
+$body-font: 'Inconsolata', monospace;
+
+$base1: rgb(27, 34, 40);
+$base2: rgb(51, 64, 75);
+$base3: rgb(91, 112, 133);
+$base4: rgb(117, 138, 160);
+
+$shade1: rgb(218, 228, 237);
+
+$accent1: rgb(106, 29, 27);
+$accent2: rgb(167, 46, 43);
+$accent3: rgb(242, 205, 204);
+
+@mixin transform($transforms) {
+  -webkit-transform: $transforms;
+     -moz-transform: $transforms;
+      -ms-transform: $transforms;
+       -o-transform: $transforms;
+          transform: $transforms;
+}
+
+@mixin appearance($prop) {
+  -webkit-appearance: $prop;
+     -moz-appearance: $prop;
+          appearance: $prop;
+}
+
+
+html, button, select {
+  font-family: $body-font;
+  color: $base1;
+}
+
+button {
+  box-sizing: border-box;
+  border: 1px solid $accent2;
+  border-radius: 3px;
+  box-shadow: inset inset 0 0 0 1px $shade1;
+  padding: 5px 20px;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: $accent2;
+  background: #FFF;
+  transition: 50ms background;
+
+  &:hover {
+    box-sizing: border-box;
+    border: 1px solid $accent2;
+    background: $accent2;
+    color: #FFF;
+    cursor: pointer;
+  }
+
+  &:disabled {
+    cursor: auto;
+    color: $base4;
+    box-sizing: border-box;
+    border: 1px solid $shade1;
+
+    &:hover {
+      box-sizing: border-box;
+      border: 1px solid $shade1;
+      background: #FFF;
+      cursor: auto;
+    }
+  }
+}
+
+select {
+  box-sizing: border-box;
+  border: 1px solid $accent2;
+  border-radius: 3px;
+  font-size: 18px;
+  text-transform: uppercase;
+  padding: 3.8px;
+  padding-right: 20px;
+  color: $accent2;
+  background-color: $accent3;
+  @include appearance(none);
+}
+
+a.styled-link {
+  text-decoration: underline;
+  color: $accent1;
+  &:hover {
+    background-color: rgba($accent1, 0.1);
+  }
+  padding-right: 2px;
+  transition: all 0.5s;
+  display: inline-block;
+}
+
+.styled-select {
+  position: relative;
+}
+
+.styled-select:before {
+  content: '▼';
+  font-family: FontAwesome;
+  color: $accent2;
+  box-sizing: border-box;
+  border-left: 1px solid $accent2;
+  display: inline-block;
+  position: absolute;
+  right: 1px;
+  top: -7px;
+  padding-top: 2px;
+  padding-bottom: 4px;
+  pointer-events: none;
+}
+
+#header {
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  margin-left: 50%;
+  margin-bottom: 25px;
+  @include transform(translateX(-50%));
+  font-family: $header-font;
+  font-size: 60px;
+  padding: 30px 20px 25px 20px;
+  box-sizing: border-box;
+  border-bottom: 3px solid $accent1;
+}
+
+#description {
+  font-size: 20px;
+  text-align: justify;
+  width: 600px;
+  margin-left: 50%;
+  margin-bottom: 40px;
+  @include transform(translateX(-50%));
+  position: relative;
+}
+
+#menu-buttons {
+  text-align: center;
+  position: relative;
+}
+
+#nes-canvas {
+  display: block;
+  border: 1px solid black;
+  margin: 30px auto;
+}
