@@ -10,7 +10,8 @@ let isRunning = false;
 const canvas = document.getElementById("nes-canvas");
 canvas.width = SCREEN_WIDTH;
 canvas.height = SCREEN_HEIGHT;
-const ctx = canvas.getContext('2d');
+const canvasContext = canvas.getContext('2d');
+const audioContext = new AudioContext();
 
 // User Input
 const KEYS = [81, 87, 69, 82, 38, 40, 37, 39];
@@ -18,7 +19,6 @@ const KEYS = [81, 87, 69, 82, 38, 40, 37, 39];
 document.addEventListener('keydown', event => {
   let index = KEYS.indexOf(event.keyCode);
   if (index !== -1) {
-    console.log("PRESSED " + index);
     nes.press_button(0, index);
     nes.press_button(1, index);
   }
@@ -69,23 +69,28 @@ loadButton.addEventListener("click", load);
 
 const updateScreen = () => {
   const imageBufferPtr = nes.image_buffer();
-  const imageBuffer = new Uint8Array(memory.buffer, imageBufferPtr, SCREEN_WIDTH * SCREEN_HEIGHT * 3);
-  const imgData = ctx.getImageData(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+  const imageBuffer = new Uint8ClampedArray(memory.buffer, imageBufferPtr, SCREEN_WIDTH * SCREEN_HEIGHT * 4);
+  const imageData = new ImageData(imageBuffer, SCREEN_WIDTH, SCREEN_HEIGHT);
+  canvasContext.putImageData(imageData, 0, 0);
+};
 
-  for (let i = 0; i < SCREEN_WIDTH * SCREEN_HEIGHT; i++) {
-    imgData.data[i * 4] = imageBuffer[i * 3];
-    imgData.data[i * 4 + 1] = imageBuffer[i * 3 + 1];
-    imgData.data[i * 4 + 2] = imageBuffer[i * 3 + 2];
-    imgData.data[i * 4 + 3] = 255;
-  }
+const updateAudio = () => {
+  const audioBufferPtr = nes.audio_buffer();
+  const audioBuffer = new Float32Array(memory.buffer, audioBufferPtr, nes.audio_buffer_len());
+  const buffer = audioContext.createBuffer(1, nes.audio_buffer_len(), 44100);
+  const bsn = audioContext.createBufferSource();
 
-  ctx.putImageData(imgData, 0, 0);
+  buffer.copyToChannel(audioBuffer, 0, 0);
+  bsn.buffer = buffer;
+  bsn.connect(audioContext.destination);
+  bsn.start();
 };
 
 const render = () => {
   if (isRunning) {
     nes.step_frame();
     updateScreen();
+    updateAudio();
     window.requestAnimationFrame(render);
   }
 }
