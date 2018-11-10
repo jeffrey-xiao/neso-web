@@ -35,7 +35,7 @@ html, button, select {
   color: $base1;
 }
 
-button {
+button, #select-rom-button {
   box-sizing: border-box;
   border: 1px solid $accent2;
   border-radius: 3px;
@@ -70,19 +70,6 @@ button {
   }
 }
 
-select {
-  box-sizing: border-box;
-  border: 1px solid $accent2;
-  border-radius: 3px;
-  font-size: 18px;
-  text-transform: uppercase;
-  padding: 3.8px;
-  padding-right: 20px;
-  color: $accent2;
-  background-color: $accent3;
-  @include appearance(none);
-}
-
 a.styled-link {
   text-decoration: underline;
   color: $accent1;
@@ -92,25 +79,6 @@ a.styled-link {
   padding-right: 2px;
   transition: all 0.5s;
   display: inline-block;
-}
-
-.styled-select {
-  position: relative;
-}
-
-.styled-select:before {
-  content: '▼';
-  font-family: FontAwesome;
-  color: $accent2;
-  box-sizing: border-box;
-  border-left: 1px solid $accent2;
-  display: inline-block;
-  position: absolute;
-  right: 1px;
-  top: -7px;
-  padding-top: 2px;
-  padding-bottom: 4px;
-  pointer-events: none;
 }
 
 #header {
@@ -142,8 +110,16 @@ a.styled-link {
   position: relative;
 }
 
+#rom-input {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  z-index: -1;
+  opacity: 0;
+}
+
 #nes-canvas {
   display: block;
-  border: 1px solid black;
+  border: 1px solid $base4;
   margin: 30px auto;
 }

@@ -6,10 +6,11 @@ const nes = Nes.new();
 const SCREEN_WIDTH = 256;
 const SCREEN_HEIGHT = 240;
 let isRunning = false;
+let powerOn = false;
 
 const canvas = document.getElementById("nes-canvas");
-canvas.width = SCREEN_WIDTH;
-canvas.height = SCREEN_HEIGHT;
+canvas.width = SCREEN_WIDTH * 2;
+canvas.height = SCREEN_HEIGHT * 2;
 const canvasContext = canvas.getContext('2d');
 const audioContext = new AudioContext();
 
@@ -37,6 +38,7 @@ const startButton = document.getElementById("start-button");
 const stopButton = document.getElementById("stop-button");
 const loadButton = document.getElementById("load-button");
 const romInput = document.getElementById("rom-input");
+const romLabel = document.getElementById("select-rom-button");
 startButton.disabled = true;
 stopButton.disabled = true;
 
@@ -54,24 +56,44 @@ const stop = () => {
 };
 
 const load = () => {
+  if (romInput.files.length == 0) {
+    alert("No ROM selected.");
+    return;
+  }
+
   stop();
   const rom = romInput.files[0];
   let fileReader = new FileReader();
   fileReader.readAsArrayBuffer(rom);
   fileReader.onload = function(event) {
     nes.load_rom(new Uint8Array(this.result));
+    if (powerOn) {
+      nes.reset();
+    }
+    powerOn = true;
   };
+};
+
+const onRomChange = event => {
+  const fileName = event.target.value.split( '\\' ).pop();
+  if (fileName) {
+    romLabel.innerHTML = fileName;
+  } else {
+    romLabel.innerHTML = "Select Rom";
+  }
 };
 
 startButton.addEventListener("click", start);
 stopButton.addEventListener("click", stop);
 loadButton.addEventListener("click", load);
+romInput.addEventListener("change", onRomChange);
 
 const updateScreen = () => {
   const imageBufferPtr = nes.image_buffer();
   const imageBuffer = new Uint8ClampedArray(memory.buffer, imageBufferPtr, SCREEN_WIDTH * SCREEN_HEIGHT * 4);
   const imageData = new ImageData(imageBuffer, SCREEN_WIDTH, SCREEN_HEIGHT);
   canvasContext.putImageData(imageData, 0, 0);
+  canvasContext.drawImage(canvas, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 0, 0, SCREEN_WIDTH * 2, SCREEN_HEIGHT * 2);
 };
 
 const updateAudio = () => {
