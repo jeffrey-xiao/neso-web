@@ -81,8 +81,8 @@ const updateAudio = () => {
   const bsn = audioContext.createBufferSource();
 
   buffer.copyToChannel(audioBuffer, 0, 0);
-  bsn.buffer = buffer;
   bsn.connect(audioContext.destination);
+  bsn.buffer = buffer;
   bsn.start();
 };
 
