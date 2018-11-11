@@ -8,6 +8,13 @@ A web interface to [`neso-rs`](https://gitlab.com/jeffrey-xiao/neso-rs).
 
 ## Screenshots
 
+![Castlevania II](screenshots/castlevania_2.png "Castlevania II")
+![Contra](screenshots/contra.png "Contra")
+![Legend of Zelda](screenshots/legend_of_zelda.png "Legend of Zelda")
+![Mega Man II](screenshots/mega_man_2.png "Mega Man II")
+![Super Mario Bros](screenshots/super_mario_bros.png "Super Mario Bros")
+![Tetris](screenshots/tetris.png "Tetris")
+
 ## License
 
 `neso-web` is distributed under the terms of both the MIT License and the Apache License (Version
