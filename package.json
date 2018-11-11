@@ -1,14 +1,14 @@
 {
-  "name": "nes-web",
+  "name": "neso-web",
   "version": "0.1.0",
-  "description": "NES web application",
+  "description": "NESO web frontend.",
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "deploy": "./deploy.js",
     "start": "webpack-dev-server"
   },
-  "repository": "https://gitlab.com/jeffrey-xiao/nes-web",
+  "repository": "https://gitlab.com/jeffrey-xiao/neso-web",
   "keywords": [
     "webassembly",
     "wasm",
@@ -29,6 +29,6 @@
     "webpack-dev-server": "^3.1.5"
   },
   "dependencies": {
-    "nes-wasm": "file:../nes-rs/pkg"
+    "neso": "v0.2.0"
   }
 }

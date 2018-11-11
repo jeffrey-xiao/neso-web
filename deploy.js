@@ -6,5 +6,5 @@ const fs = require('fs');
 
 ghpages.publish('dist', {
   branch: 'gh-pages',
-  repo: 'https://gitlab.com/jeffrey-xiao/nes-web',
+  repo: 'https://gitlab.com/jeffrey-xiao/neso-web',
 });

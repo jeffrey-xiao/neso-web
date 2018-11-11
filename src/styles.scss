@@ -81,6 +81,11 @@ a.styled-link {
   display: inline-block;
 }
 
+span.emphasis {
+  color: $accent1;
+  font-weight: bold;
+}
+
 #header {
   text-align: center;
   display: inline-block;
@@ -118,7 +123,7 @@ a.styled-link {
   opacity: 0;
 }
 
-#nes-canvas {
+#neso-canvas {
   display: block;
   border: 1px solid $base4;
   margin: 30px auto;

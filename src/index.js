@@ -1,5 +1,5 @@
-import { memory } from "nes-wasm/nes_wasm_bg";
-import { Nes } from "nes-wasm";
+import { memory } from "neso/neso_bg";
+import { Nes } from "neso";
 import './styles.scss';
 
 const nes = Nes.new();
@@ -8,14 +8,14 @@ const SCREEN_HEIGHT = 240;
 let isRunning = false;
 let powerOn = false;
 
-const canvas = document.getElementById("nes-canvas");
+const canvas = document.getElementById("neso-canvas");
 canvas.width = SCREEN_WIDTH * 2;
 canvas.height = SCREEN_HEIGHT * 2;
 const canvasContext = canvas.getContext('2d');
 const audioContext = new AudioContext();
 
 // User Input
-const KEYS = [81, 87, 69, 82, 38, 40, 37, 39];
+const KEYS = [80, 79, 16, 13, 87, 83, 65, 68];
 
 document.addEventListener('keydown', event => {
   let index = KEYS.indexOf(event.keyCode);
