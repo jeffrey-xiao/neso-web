@@ -1,5 +1,17 @@
 language: node_js
 node_js: "10"
 
+install:
+  - npm install
+
 script:
-  - ./node_modules/.bin/webpack
+  - npx prettier --list-different "src/**/*.{html,js,scss}"
+  - npx eslint src
+  - npx webpack --config webpack.config.js
+
+after_success:
+  - |
+    git clone https://github.com/davisp/ghp-import.git &&
+    ./ghp-import/ghp_import.py -n -p -f -m "Site upload" -r https://"$GH_TOKEN"@github.com/"$TRAVIS_REPO_SLUG.git" target/doc &&
+    echo "Uploaded site"
+

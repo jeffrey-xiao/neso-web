@@ -3,11 +3,6 @@
   "version": "0.1.0",
   "description": "NESO web frontend.",
   "main": "index.js",
-  "scripts": {
-    "build": "webpack --config webpack.config.js",
-    "deploy": "./deploy.js",
-    "start": "webpack-dev-server"
-  },
   "repository": "https://gitlab.com/jeffrey-xiao/neso-web",
   "keywords": [
     "webassembly",
@@ -18,15 +13,27 @@
   "author": "Jeffrey Xiao <jeffrey.xiao1998@gmail.com>",
   "license": "(MIT OR Apache-2.0)",
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
     "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^1.0.0",
-    "gh-pages": "^1.2.0",
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
     "node-sass": "^4.9.3",
+    "prettier": "1.15.2",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.0",
     "webpack": "^4.16.3",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.5"
+  },
+  "scripts": {
+    "build": "npx webpack --config webpack.config.js",
+    "fmt": "npx prettier --write \"src/**/*.{html,js,scss}\"",
+    "lint": "npx eslint src",
+    "start": "npx webpack-dev-server"
   },
   "dependencies": {
     "neso": "v0.3.0"

@@ -17,25 +17,27 @@ $accent3: rgb(242, 205, 204);
 
 @mixin transform($transforms) {
   -webkit-transform: $transforms;
-     -moz-transform: $transforms;
-      -ms-transform: $transforms;
-       -o-transform: $transforms;
-          transform: $transforms;
+  -moz-transform: $transforms;
+  -ms-transform: $transforms;
+  -o-transform: $transforms;
+  transform: $transforms;
 }
 
 @mixin appearance($prop) {
   -webkit-appearance: $prop;
-     -moz-appearance: $prop;
-          appearance: $prop;
+  -moz-appearance: $prop;
+  appearance: $prop;
 }
 
-
-html, button, select {
+html,
+button,
+select {
   font-family: $body-font;
   color: $base1;
 }
 
-button, #select-rom-button {
+button,
+#select-rom-button {
   box-sizing: border-box;
   border: 1px solid $accent2;
   border-radius: 3px;
@@ -44,14 +46,14 @@ button, #select-rom-button {
   font-size: 18px;
   text-transform: uppercase;
   color: $accent2;
-  background: #FFF;
+  background: #fff;
   transition: 50ms background;
 
   &:hover {
     box-sizing: border-box;
     border: 1px solid $accent2;
     background: $accent2;
-    color: #FFF;
+    color: #fff;
     cursor: pointer;
   }
 
@@ -64,7 +66,7 @@ button, #select-rom-button {
     &:hover {
       box-sizing: border-box;
       border: 1px solid $shade1;
-      background: #FFF;
+      background: #fff;
       cursor: auto;
     }
   }
