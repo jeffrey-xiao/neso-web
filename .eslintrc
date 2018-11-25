@@ -7,7 +7,6 @@
   },
   "rules": {
     "arrow-parens": ["error", "always"],
-    "no-bitwise": 0,
     "import/no-unresolved": 0
   },
   "env": {
