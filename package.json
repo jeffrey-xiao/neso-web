@@ -36,6 +36,6 @@
     "start": "npx webpack-dev-server"
   },
   "dependencies": {
-    "neso": "v0.3.0"
+    "neso": "v0.4.0"
   }
 }
