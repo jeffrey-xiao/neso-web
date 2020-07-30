@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>neso-web - Jeffrey Xiao</title>
+  </head>
+  <body>
+    <div id="header">neso-web</div>
+
+    <div id="description">
+      An NES emulator written in Rust that compiles to WebAssembly. For more information, check out
+      <a class="styled-link" href="https://gitlab.com/jeffrey-xiao/neso-web">neso-web</a> and
+      <a class="styled-link" href="https://gitlab.com/jeffrey-xiao/neso-rs">neso-rs</a>. The
+      controls are <span class="emphasis">P</span> and <span class="emphasis">O</span> for A and B,
+      <span class="emphasis">Enter</span> and <span class="emphasis">Shift</span> for Start and
+      Select, and <span class="emphasis">WASD</span> for directional input.
+    </div>
+
+    <div id="menu-buttons">
+      <button id="start-button">Start</button> <button id="stop-button">Stop</button>
+      <label for="rom-input" id="select-rom-button">Select Rom</label>
+      <input type="file" name="file" id="rom-input" /> <button id="load-button">Load</button>
+    </div>
+    <canvas id="neso-canvas"></canvas>
+    <script src="./bootstrap.js"></script>
+  </body>
+</html>
